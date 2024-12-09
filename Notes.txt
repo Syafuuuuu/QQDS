@@ -1,0 +1,21 @@
+/ Gender : gender
+(bar) Age : age
+(bar) Occupations : occ
+/ Staying at : stay
+/ Frequent places visited in UUM : fplace
+/ Which DKG do you most frequently visits? : fhall
+/ Have you heard of Quoffe Coffee before? : heard
+* Where did you hear us from? : heardFrom
+(2x2)Customers’ Favorite Product : favProd
+* Preferred places for consumption of the product : consumption
+* Loyalty to the brand : loyalty	
+
+
+Likelihood of Customer to Recommend Quoffe Coffee to Friends or Colleagues : Q1
+Overalls Customer Satisfaction or Dissatisfaction Level : Q2
+Customers’ Review on Price of Beverages : Q3
+Customers’ Rate to The Quoffe Product Quality : Q4
+Customers’ Perception of Quoffe Customer Service : Q5
+Changes of Customer Perception : Q6
+The Frequency of Quoffe Promotion : Q7
+The Frequency of Customers Purchase : Q8

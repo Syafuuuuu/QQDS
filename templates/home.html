@@ -1,0 +1,178 @@
+{% extends 'base.html' %}
+{% block topscript %}
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+{% endblock %}
+
+<!-- Block Content -->
+{% block content %}
+<div style="padding: 20px;">
+    <h1 class="flex-container centered">----------------------- Import -----------------------</h1>
+    <p class="flex-container centered">Import your .csv file here to start the dashboard</p>
+
+    <form method="POST" enctype="multipart/form-data" class="flex-container centered">
+        {{form.hidden_tag()}}
+        {{form.file()}}
+        {{form.submit()}}
+    </form>
+</div>
+{% if flag %}
+<br><br>
+
+<!-- ..... Numeric Dashboard ..... -->
+<h1 class="flex-container centered">------------------ General Information ------------------</h1>
+<div class="flex-container spaced">
+    <div class="dashboard">
+        <h1 class="dashboard number">{{recordCount}}</h1>
+        <p class="dashboard subtext">Quoffeers</p>
+    </div>
+    <div class="dashboard">
+        <h1 class="dashboard number">{{female}}%</h1>
+        <p class="dashboard subtext">Females</p>
+    </div>
+    <div class="dashboard">
+        <h1 class="dashboard number">{{100-female}}%</h1>
+        <p class="dashboard subtext">Males</p>
+    </div>
+    <div class="dashboard">
+        <h1 class="dashboard number">{{knows}}%</h1>
+        <p class="dashboard subtext">Have Heared of Us!</p>
+    </div>
+</div>
+
+<br>
+<!-- ..... Map Dashboard ..... -->
+<div class="flex-container spaced">
+    <div id="chartmap" class="chartmap" style="width: 85%;"></div>
+</div>
+<br><br>
+
+<!-- ..... Bar Graphs ..... -->
+<h1 class="flex-container centered">---------------- Customer Demography ----------------</h1>
+<br>
+<div class="flex-container spaced">
+    <div id="b1" class="barSize"></div>
+    <div id="b2" class="barSize"></div>
+</div>
+<br><br>
+
+<!-- ..... Pie Graphs ..... -->
+<h1 class="flex-container centered">----------------- Customer Behaviour -----------------</h1>
+<br>
+<div class="flex-container spaced">
+    <div id="p1" class="pieSize"></div>
+    <div id="p2" class="pieSize"></div>
+    <div id="p3" class="pieSize"></div>
+</div>
+<br><br>
+
+<!-- ..... Drink Gauge ..... -->
+<h1 class="flex-container centered">------------------ What's the Favourite ------------------</h1>
+<br>
+<div class="flex-container spaced">
+    <div class="dashboard">
+        <img src="../static/images/ori.png" alt="Ori Coffee" width="200" height="200">
+        <h1 class="dashboard number">{{ori}}%</h1>
+        <p class="dashboard subtext">{{ori0}} Respondents</p>
+    </div>
+    <div class="dashboard">
+        <img src="../static/images/coco.png" alt="Merry Coco" width="200" height="200">
+        <h1 class="dashboard number">{{coco}}%</h1>
+        <p class="dashboard subtext">{{coco0}} Respondents</p>
+    </div>
+    <div class="dashboard">
+        <img src="../static/images/my.png" alt="Malaysiano" width="200" height="200">
+        <h1 class="dashboard number">{{my}}%</h1>
+        <p class="dashboard subtext">{{my0}} Respondents</p>
+    </div>
+    <div class="dashboard">
+        <img src="../static/images/hork.png" alt="Horkasai" width="200" height="200">
+        <h1 class="dashboard number">{{hork}}%</h1>
+        <p class="dashboard subtext">{{hork0}} Respondents</p>
+    </div>
+</div>
+<br><br>
+<!-- ..... Likert Donuts ..... -->
+<h1 class="flex-container centered">------------------ Customer Queries ------------------</h1>
+<br>
+<div class="flex-container donut">
+    <div id="l1" class="donutSize"></div>
+    <div id="l2" class="donutSize"></div>
+    <div id="l3" class="donutSize"></div>
+    <div id="l4" class="donutSize"></div>
+</div>
+<br>
+<div class="flex-container spaced">
+    <div id="l5" class="donutSize"></div>
+    <div id="l6" class="donutSize"></div>
+    <div id="l7" class="donutSize"></div>
+    <div id="l8" class="donutSize"></div>
+
+</div>
+<br>
+<div class="flex-container spaced">
+    <div id="l7" style="width: 20%; height: 20%;"></div>
+    <div id="l8" style="width: 20%; height: 20%;"></div>
+</div>
+
+
+
+{% else %}
+<h1 class="flex-container centered">------------------------------------------------------</h1>
+<div class="flex-container centered" style="height: 60vh;">
+    <h1>Well There's Nothing Yet! You should insert a .csv file!</h1>
+</div>
+
+{% endif %}
+
+{% endblock %}
+
+
+<!-- Scripts Content -->
+{% block botscript %}
+<script>
+
+    map = {{ graphJSONmap | safe }};
+    Plotly.newPlot('chartmap', map, {});
+
+    b1 = {{ b1 | safe }};
+    Plotly.newPlot('b1', b1, {});
+
+    b2 = {{ b2 | safe }};
+    Plotly.newPlot('b2', b2, {});
+
+    l1 = {{ l1 | safe }};
+    Plotly.newPlot('l1', l1, {});
+
+    l2 = {{ l2 | safe }};
+    Plotly.newPlot('l2', l2, {});
+
+    l3 = {{ l3 | safe }};
+    Plotly.newPlot('l3', l3, {});
+
+    l4 = {{ l4 | safe }};
+    Plotly.newPlot('l4', l4, {});
+
+    l5 = {{ l5 | safe }};
+    Plotly.newPlot('l5', l5, {});
+
+    l6 = {{ l6 | safe }};
+    Plotly.newPlot('l6', l6, {});
+
+    l7 = {{ l7 | safe }};
+    Plotly.newPlot('l7', l7, {});
+
+    l8 = {{ l8 | safe }};
+    Plotly.newPlot('l8', l8, {});
+
+    p1 = {{ p1 | safe }};
+    Plotly.newPlot('p1', p1, {});
+
+    p2 = {{ p2 | safe }};
+    Plotly.newPlot('p2', p2, {});
+
+    p3 = {{ p3 | safe }};
+    Plotly.newPlot('p3', p3, {});
+
+</script>
+{% endblock %}

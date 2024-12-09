@@ -1,0 +1,44 @@
+.flex-container {
+    display: flex;
+}
+
+.flex-container.spaced {
+    justify-content: space-around;
+}
+
+.flex-container.donut{
+    justify-content: space-around;
+    align-items: center;
+}
+
+.flex-container.centered {
+    justify-content: center;
+    align-items: center;
+}
+
+.dashBoard{
+    text-align: center;
+}
+
+.dashBoard.number{
+    font-size: 50px;
+}
+
+.dashBoard.subtext{
+    font-size: 20px;
+}
+
+.donutSize{
+    width: 300px;
+    height: 300px;
+}
+
+.barSize{
+    width: 45%;
+    height: 20%;
+}
+
+.pieSize{
+    width: 400px;
+    height: 400px;
+}
